@@ -102,10 +102,10 @@ function NavBar() {
 
       >
         <div className="h-full w-full flex flex-col items-center justify-center text-2xl">
-          <span className="px-4m contanier opacity-0">About</span>
-          <span className="px-4m contanier opacity-0">Contact Us</span>
-          <span className="px-4m contanier opacity-0">Login</span>
-          <span className="px-4m contanier opacity-0">SignUp</span>
+          <span className="py-6m contanier opacity-0">About</span>
+          <span className="py-6m contanier opacity-0">Contact Us</span>
+          <span className="py-6m contanier opacity-0">Login</span>
+          <span className="py-6m contanier opacity-0">SignUp</span>
         </div>
       </div>
     </div>
