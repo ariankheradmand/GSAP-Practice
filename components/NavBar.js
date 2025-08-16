@@ -4,9 +4,6 @@ import React, { useState, useEffect, useRef } from "react";
 import "../app/globals.css";
 import { AlignRight } from "lucide-react";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(useGSAP);
 
 function NavBar() {
   const [scrolled, setScrolled] = useState(false);
@@ -90,7 +87,7 @@ function NavBar() {
     <div className="w-full h-auto flex flex-col items-center justify-center relative">
       <div
         ref={barRef}
-        className="h-[62px] w-full bg-white/40 top-0 rounded-b-xl fixed py-6 flex items-center justify-center"
+        className="h-[62px] w-full shadow-xl bg-white/40 top-0 rounded-b-xl fixed py-6 flex items-center justify-center"
       >
         <div className="flex justify-start w-6/12 px-4m">
           <span>Welcome</span>
@@ -103,7 +100,7 @@ function NavBar() {
 
       <div
         ref={menuRef}
-        className={`bg-white/40 rounded-xl fixed  ${openHam ? "" : "hidden"} `}
+        className={`bg-white/40 rounded-xl fixed shadow-xl ${openHam ? "" : "hidden"} `}
 
       >
         <div className="h-full w-full flex flex-col items-center justify-center text-2xl">
