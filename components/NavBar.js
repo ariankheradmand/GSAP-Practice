@@ -21,8 +21,7 @@ function NavBar() {
           height: 62,
           width: "92%",
           borderRadius: "1rem",
-          duration: 0.5,
-          ease: "power3.out",
+          ease: "power3.in",
         });
       } else if (window.scrollY <= 50 && scrolled) {
         setScrolled(false);
@@ -31,8 +30,7 @@ function NavBar() {
           height: 62,
           width: "100%",
           borderRadius: "0 0 0.75rem 0.75rem",
-          duration: 0.5,
-          ease: "power3.inOut",
+          ease: "power3.out",
         });
       }
     };
@@ -46,42 +44,42 @@ function NavBar() {
     if (openHam) {
       gsap.fromTo(
         ".contanier",
-        { opacity: 0, y: 40 }, 
-        { opacity: 1, y: 0, stagger: 0.2, duration: 0.5 , ease: "power1.inOut"} 
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, stagger: 0.2, duration: 0.5, ease: "power1.inOut" }
       )
     } else {
       gsap.fromTo(
         ".contanier",
-        { opacity: 1, y: 0 }, 
-        { opacity: 0, y: 20, duration: 0.5 } 
+        { opacity: 1, y: 0 },
+        { opacity: 0, y: 20, duration: 0.5 }
       )
     }
   }, [openHam])
 
-  // animate menu open/close
+
   useEffect(() => {
     if (openHam) {
       gsap.fromTo(menuRef.current,
         { y: -20, opacity: 0, scaleX: 0, width: "60%", width: "90%", transformOrigin: "center" },
-        { y: 0, top: "80", opacity: 1, height: "80%", scaleX: 1, duration: 0.4, width: "91.68%", ease: "power3.out", display: "block" }
+        { y: 0, top: "80", opacity: 1, height: "80%", scaleX: 1, width: "91.68%", ease: "power3.out", display: "block" }
       );
     } else {
       gsap.to(menuRef.current, {
         y: -20,
         opacity: 0,
         scaleX: 0,
-        duration: 0.3,
         ease: "power3.in",
         onComplete: () => gsap.set(menuRef.current, { display: "none" }),
       });
     }
-    if (scrolled) {
-      gsap.to(menuRef.current, { width: "91.63%", ease: "power3.out" });
+  }, [openHam])
+  useEffect(()=> {
+     if (scrolled) {
+      gsap.to(menuRef.current, { width: "91.68%", ease: "power3.in" });
     } else {
-      gsap.to(menuRef.current, { width: "100%", ease: "power3.in" });
+      gsap.to(menuRef.current, { width: "100%", ease: "power3.out" });
     }
-  }, [openHam, scrolled])
-
+  } , [scrolled])
 
   return (
     <div className="w-full h-auto flex flex-col items-center justify-center relative">
@@ -104,10 +102,10 @@ function NavBar() {
 
       >
         <div className="h-full w-full flex flex-col items-center justify-center text-2xl">
-          <span className="py-7m contanier opacity-0">About</span>
-          <span className="py-7m contanier opacity-0">Contact Us</span>
-          <span className="py-7m contanier opacity-0">Login</span>
-          <span className="py-7m contanier opacity-0">SignUp</span>
+          <span className="px-4m contanier opacity-0">About</span>
+          <span className="px-4m contanier opacity-0">Contact Us</span>
+          <span className="px-4m contanier opacity-0">Login</span>
+          <span className="px-4m contanier opacity-0">SignUp</span>
         </div>
       </div>
     </div>
