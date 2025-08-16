@@ -4,6 +4,9 @@ import React, { useState, useEffect, useRef } from "react";
 import "../app/globals.css";
 import { AlignRight } from "lucide-react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
 
 function NavBar() {
   const [scrolled, setScrolled] = useState(false);
@@ -42,6 +45,22 @@ function NavBar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [scrolled]);
 
+  useEffect(() => {
+    if (openHam) {
+      gsap.fromTo(
+        ".contanier",
+        { opacity: 0, y: 40 }, 
+        { opacity: 1, y: 0, stagger: 0.2, duration: 0.5 , ease: "power1.inOut"} 
+      )
+    } else {
+      gsap.fromTo(
+        ".contanier",
+        { opacity: 1, y: 0 }, 
+        { opacity: 0, y: 20, duration: 0.5 } 
+      )
+    }
+  }, [openHam])
+
   // animate menu open/close
   useEffect(() => {
     if (openHam) {
@@ -60,10 +79,10 @@ function NavBar() {
       });
     }
     if (scrolled) {
-        gsap.to(menuRef.current, { width: "91.63%", ease: "power3.out" });
-      } else {
-        gsap.to(menuRef.current, { width: "100%", ease: "power3.in" });
-      }
+      gsap.to(menuRef.current, { width: "91.63%", ease: "power3.out" });
+    } else {
+      gsap.to(menuRef.current, { width: "100%", ease: "power3.in" });
+    }
   }, [openHam, scrolled])
 
 
@@ -78,13 +97,22 @@ function NavBar() {
         </div>
         <div className="flex justify-end w-6/12 px-4m">
           <AlignRight onClick={() => setOpenHam(!openHam)} />
+
         </div>
       </div>
 
       <div
         ref={menuRef}
-        className={`bg-white/40 rounded-xl fixed  hidden `}
-      ></div>
+        className={`bg-white/40 rounded-xl fixed  ${openHam ? "" : "hidden"} `}
+
+      >
+        <div className="h-full w-full flex flex-col items-center justify-center text-2xl">
+          <span className="py-7m contanier opacity-0">About</span>
+          <span className="py-7m contanier opacity-0">Contact Us</span>
+          <span className="py-7m contanier opacity-0">Login</span>
+          <span className="py-7m contanier opacity-0">SignUp</span>
+        </div>
+      </div>
     </div>
   );
 }
