@@ -94,6 +94,54 @@ function NavBar() {
   }, [openHam])
 
   useEffect(() => {
+       if (openHam) {
+         gsap.fromTo(".ham-icon1" , {
+          width: "18px", 
+          backgroundColor : "white"
+        } ,{
+          width: "20px", 
+          rotate: 25, 
+          backgroundColor : "black"
+        } )
+        gsap.fromTo(".ham-icon2" , {
+          width: "8px", 
+          backgroundColor : "white"
+        } ,{
+          width: "20px", 
+          delay: .3 , 
+          rotate: 25, 
+          backgroundColor : "black"
+        } )
+        gsap.fromTo(".ham-icon3" , {
+          width: "12px", 
+          backgroundColor : "white"
+        } ,{
+          width: "20px", 
+          delay: 0.6 , 
+          rotate: 25, 
+          backgroundColor : "black"
+        } )
+       } else {
+        gsap.to(".ham-icon1" , {
+          width: "18px", 
+          rotate: 0, 
+          backgroundColor : "white"
+        })
+        gsap.to(".ham-icon2" , {
+          width: "8px", 
+          rotate: 0, 
+          backgroundColor : "white"
+        })
+        gsap.to(".ham-icon3" , {
+          width: "12px", 
+          rotate: 0, 
+          backgroundColor : "white"
+        })
+       }
+       
+  }, [openHam])
+
+  useEffect(() => {
     if (scrolled) {
       gsap.to(menuRef.current, { width: "91.68%", ease: "power3.in" });
     } else {
@@ -111,7 +159,11 @@ function NavBar() {
           <span>Welcome</span>
         </div>
         <div className="flex justify-end w-6/12 px-4m">
-          <AlignRight onClick={() => setOpenHam(!openHam)} />
+          <div onClick={() => setOpenHam(!openHam)} className="w-5 h-4 flex flex-col justify-between items-center">
+            <div className="w-5 bg-white h-[2px] ham-icon1 rounded-full"></div>
+            <div className="w-2 bg-white h-[2px] ham-icon2 rounded-full"></div>
+            <div className="w-4 bg-white h-[2px] ham-icon3 rounded-full"></div>
+          </div>
 
         </div>
       </div>
