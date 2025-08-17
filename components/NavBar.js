@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import "../app/globals.css";
-import { AlignRight } from "lucide-react";
+import { AlignRight, Info, Mail, LogIn, UserPlus } from "lucide-react";
 import gsap from "gsap";
 
 function NavBar() {
@@ -45,7 +45,16 @@ function NavBar() {
       gsap.fromTo(
         ".contanier",
         { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, stagger: 0.2, duration: 0.5, ease: "power1.inOut" }
+        { opacity: 1, y: 0, borderBottom: "1px solid white", stagger: 0.2, duration: 0.5, ease: "power1.inOut" },
+      )
+      gsap.fromTo(
+        ".contanier",
+        { color : "white" },
+        { color: "black", delay:0.2 , stagger: 0.2 , ease: "power1.inOut" },
+      )
+      gsap.to(
+        ".contanier",
+        { borderBottom: "1px solid black" , delay : 2 , stagger: 0.2 , ease: "power1.inOut" },
       )
     } else {
       gsap.fromTo(
@@ -56,12 +65,22 @@ function NavBar() {
     }
   }, [openHam])
 
+  useEffect(() => {
+    if (openHam) {
+      gsap.fromTo(
+        ".icon",
+        { opacity: 0 , color: "white" },
+        { opacity: 1 , color: "black" ,delay: 0.5, stagger: 0.2 }
+      )
+    }
+  }, [openHam])
 
   useEffect(() => {
     if (openHam) {
       gsap.fromTo(menuRef.current,
         { y: -20, opacity: 0, scaleX: 0, width: "60%", width: "90%", transformOrigin: "center" },
         { y: 0, top: "80", opacity: 1, height: "80%", scaleX: 1, width: "91.68%", ease: "power3.out", display: "block" }
+
       );
     } else {
       gsap.to(menuRef.current, {
@@ -73,13 +92,14 @@ function NavBar() {
       });
     }
   }, [openHam])
-  useEffect(()=> {
-     if (scrolled) {
+
+  useEffect(() => {
+    if (scrolled) {
       gsap.to(menuRef.current, { width: "91.68%", ease: "power3.in" });
     } else {
       gsap.to(menuRef.current, { width: "100%", ease: "power3.out" });
     }
-  } , [scrolled])
+  }, [scrolled])
 
   return (
     <div className="w-full h-auto flex flex-col items-center justify-center relative">
@@ -101,11 +121,19 @@ function NavBar() {
         className={`bg-white/40 rounded-xl fixed shadow-xl ${openHam ? "" : "hidden"} `}
 
       >
-        <div className="h-full w-full flex flex-col items-center justify-center text-2xl">
-          <span className="py-6m contanier opacity-0">About</span>
-          <span className="py-6m contanier opacity-0">Contact Us</span>
-          <span className="py-6m contanier opacity-0">Login</span>
-          <span className="py-6m contanier opacity-0">SignUp</span>
+        <div className="h-full w-full flex flex-col items-center justify-center text-2xl gap-6">
+          <span className="py-2 contanier opacity-0 flex items-center gap-2">
+            <Info className="icon" size={22} /> About
+          </span>
+          <span className="py-2 contanier opacity-0 flex items-center gap-2">
+            <Mail className="icon" size={22} /> Contact Us
+          </span>
+          <span className="py-2 contanier opacity-0 flex items-center gap-2">
+            <LogIn className="icon" size={22} /> Login
+          </span>
+          <span className="py-2 contanier opacity-0 flex items-center gap-2">
+            <UserPlus className="icon" size={22} /> SignUp
+          </span>
         </div>
       </div>
     </div>
