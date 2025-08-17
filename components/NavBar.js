@@ -130,11 +130,13 @@ function NavBar() {
         gsap.to(".ham-icon2" , {
           width: "8px", 
           rotate: 0, 
+          delay : 0.2 ,
           backgroundColor : "white"
         })
         gsap.to(".ham-icon3" , {
           width: "12px", 
           rotate: 0, 
+          delay : 0.4 ,
           backgroundColor : "white"
         })
        }
@@ -160,9 +162,9 @@ function NavBar() {
         </div>
         <div className="flex justify-end w-6/12 px-4m">
           <div onClick={() => setOpenHam(!openHam)} className="w-5 h-4 flex flex-col justify-between items-center">
-            <div className="w-5 bg-white h-[2px] ham-icon1 rounded-full"></div>
-            <div className="w-2 bg-white h-[2px] ham-icon2 rounded-full"></div>
-            <div className="w-4 bg-white h-[2px] ham-icon3 rounded-full"></div>
+            <div className=" bg-white h-[2px] ham-icon1 rounded-full"></div>
+            <div className=" bg-white h-[2px] ham-icon2 rounded-full"></div>
+            <div className=" bg-white h-[2px] ham-icon3 rounded-full"></div>
           </div>
 
         </div>
