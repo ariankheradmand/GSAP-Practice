@@ -151,6 +151,13 @@ function NavBar() {
     }
   }, [scrolled])
 
+  useEffect(() => {
+    gsap.to(".text" , {
+         opacity: 1,
+         ease: "power1.in"
+    })
+  }, [])
+
   return (
     <div className="w-full h-auto flex flex-col items-center justify-center relative">
       <div
@@ -158,7 +165,7 @@ function NavBar() {
         className="h-[62px] w-full shadow-xl bg-white/40 top-0 rounded-b-xl fixed py-6 flex items-center justify-center"
       >
         <div className="flex justify-start w-6/12 px-4m">
-          <span>Welcome</span>
+          <span className="text opacity-0">Practice</span>
         </div>
         <div className="flex justify-end w-6/12 px-4m">
           <div onClick={() => setOpenHam(!openHam)} className="w-5 h-4 flex flex-col justify-between items-center">
