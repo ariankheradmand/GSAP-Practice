@@ -1,71 +1,55 @@
 "use client"
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import gsap from "gsap";
-import {
-  Cpu,
-  Server,
-  Database,
-  Code,
-  Laptop,
-  Cloud,
-  Terminal,
-  Wifi,
-  HardDrive,
-  Monitor
-} from "lucide-react";
+import { Fingerprint } from "lucide-react";
 
 function Background() {
-  const dots = Array.from({ length: 350 }); // 150 icons instead of 550 for performance
+const [repeat, setRepeat] = useState(true);
 
-  // All icons in an array
-  const icons = [
-    Cpu,
-    Server,
-    Database,
-    Code,
-    Laptop,
-    Cloud,
-    Terminal,
-    Wifi,
-    HardDrive,
-    Monitor,
-  ];
-
-  useEffect(() => {
-    gsap.to(".dots", {
-      color: "white",
-      duration: 0.2,
-      stagger: { each: 0.01, from: "random" },
-      repeat: -1,
-      yoyo: true,
+useEffect(() => {
+  if (repeat) {
+    gsap.to(".mask", {
+      height: "46px",
+      duration: 3,
+      ease: "power2.inOut",
+      onComplete: () => setRepeat(false),
     });
-
-    gsap.to(".dots", {
-      scale: 1.2,
-      delay: 1,
-      duration: 0.2,
-      stagger: { each: 0.01, from: "random" },
-      repeat: -1,
-      yoyo: true,
+    gsap.to(".line", {
+      top: "45px",
+      duration: 3,
+      ease: "power2.inOut",
+      onComplete: () => setRepeat(false),
     });
-  }, []);
+  } else {
+    gsap.to(".mask", {
+      height: "5px",
+      duration: 3,
+      ease: "power2.inOut",
+      onComplete: () => setRepeat(true),
+    });
+    gsap.to(".line", {
+      top: "2px",
+      duration: 3,
+      ease: "power2.inOut",
+      onComplete: () => setRepeat(true),
+    });
+  }
+}, [repeat]);
 
-  return (
-    <div className="w-full h-screen overflow-hidden mt-5 flex items-center justify-center relative">
-      <div className="grid grid-cols-[repeat(13,1fr)] gap-2 -z-20">
-        {dots.map((_, i) => {
-          const Icon = icons[Math.floor(Math.random() * icons.length)];
-          return (
-            <Icon
-              key={i}
-              size={20}
-              className="dots text-black -z-20"
-            />
-          );
-        })}
-      </div>
-    </div>
-  );
+
+    return (
+        <div className="w-full h-[600px] overflow-hidden mt-20 flex items-center justify-center relative">
+            <div className="border-2 border-black/20 outline-1 outline-black outline-offset-2 rounded-full h-16 w-16 flex items-center justify-center relative">
+                <Fingerprint size={46} />
+                <div className="mask absolute w-[46px] h-[5px] flex items-start justify-center overflow-hidden top-[7px]">
+                    <div className="line absolute top-1 w-18 h-px rounded-full shadow shadow-white  bg-white z-10"></div>
+                    <div className="  w-[46px] h-[46px]">
+                        <Fingerprint className="absolute text-black/50 size-[46px] top-0" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default Background;
