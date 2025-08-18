@@ -159,10 +159,10 @@ function NavBar() {
   }, [])
 
   return (
-    <div className="w-full h-auto flex flex-col items-center justify-center relative">
+    <div className="w-full h-auto flex flex-col items-center justify-center relative z-10">
       <div
         ref={barRef}
-        className="h-[62px] w-full shadow-xl bg-white/40 top-0 rounded-b-xl fixed py-6 flex items-center justify-center"
+        className="h-[62px] w-full shadow-xl bg-white/10 backdrop-blur-md top-0 rounded-b-xl fixed py-6 flex items-center justify-center"
       >
         <div className="flex justify-start w-6/12 px-4m">
           <span className="text opacity-0">Practice</span>
@@ -179,7 +179,7 @@ function NavBar() {
 
       <div
         ref={menuRef}
-        className={`bg-white/40 rounded-xl fixed shadow-xl ${openHam ? "" : "hidden"} `}
+        className={`bg-white/10 backdrop-blur-md rounded-xl fixed shadow-xl ${openHam ? "" : "hidden"} `}
 
       >
         <div className="h-full w-full flex flex-col items-center justify-center text-2xl gap-6">
