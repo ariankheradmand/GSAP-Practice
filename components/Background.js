@@ -38,7 +38,7 @@ useEffect(() => {
 
 
     return (
-        <div className="w-full h-[600px] overflow-hidden mt-20 flex items-center justify-center relative">
+        <div className="w-full h-[400px] overflow-hidden mt-20 flex items-center justify-center relative">
             <div className="border-2 border-black/20 outline-1 outline-black outline-offset-2 rounded-full h-16 w-16 flex items-center justify-center relative">
                 <Fingerprint size={46} />
                 <div className="mask absolute w-[46px] h-[5px] flex items-start justify-center overflow-hidden top-[7px]">

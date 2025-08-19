@@ -144,13 +144,13 @@ function NextIcon() {
     return (
         <div className='w-full h-full flex flex-col items-center justify-center gap-9'>
             <div className='w-full h-full flex items-center justify-center gap-5'>
-                <div className='w-32 h-38 item-3 absolute translate-x-36 bg-black'>3</div>
-                <div className='w-36 h-42 item-2 absolute bg-black'>2</div>
-                <div className='w-32 h-38 item-1 absolute -translate-x-36 bg-black'>1</div>
+                <div className='w-32 h-38 item-3 absolute translate-x-36 bg-white rounded-lg'></div>
+                <div className='w-36 h-42 item-2 absolute bg-black rounded-lg'></div>
+                <div className='w-32 h-38 item-1 absolute -translate-x-36 bg-red-300 rounded-lg'></div>
             </div>
 
-            <div className='w-full h-full flex items-center justify-center gap-9 mt-30'>
-                <button onClick={() => {
+            <div className='w-full h-full flex items-center justify-center gap-150 '>
+                <button className='border border-black rounded-lg px-4 py-2 cursor-pointer' onClick={() => {
                     if (center === 3) {
                         setCenter(1)
                     } else {
@@ -159,7 +159,7 @@ function NextIcon() {
                     setPlus(true)
                 }}>Next</button>
 
-                <button onClick={() => {
+                <button className='border border-black rounded-lg px-4 py-2 cursor-pointer' onClick={() => {
                     if (center === 1) {
                         setCenter(3)
                     } else {
