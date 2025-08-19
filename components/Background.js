@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from "react";
 import gsap from "gsap";
-import { Fingerprint } from "lucide-react";
+import { Fingerprint  } from "lucide-react";
 
 function Background() {
 const [repeat, setRepeat] = useState(true);
