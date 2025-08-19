@@ -44,16 +44,66 @@ function Loading() {
                 repeat: -1,
                 ease: "elastic"
             })
-
+    }, [])
+    useEffect(() => {
+        gsap.fromTo(".firstCube" , {
+            left: 0,
+        }, {
+            left: 204,
+            rotate: 360,
+            duration: 2,
+            yoyo: true,
+                repeat: -1,
+                ease: "circ"
+        })
+        gsap.fromTo(".secondCube" , {
+            left: 0,
+        }, {
+            left: 152,
+            rotate: 360,
+            duration: 2,
+            yoyo: true,
+                repeat: -1,
+                ease: "circ"
+        })
+        gsap.fromTo(".thirdCube" , {
+            left: 0,
+        }, {
+            left: 100,
+            rotate: 360,
+            duration: 2,
+            yoyo: true,
+                repeat: -1,
+                ease: "circ"
+        })
+        gsap.fromTo(".forthCube" , {
+            left: 0,
+        }, {
+            left: 48,
+            rotate: 360,
+            duration: 2,
+            yoyo: true,
+                repeat: -1,
+                ease: "circ"
+        })
     }, [])
 
     return (
-        <div className='w-full flex flex-col items-center justify-center gap-6 mt-32'>
+        <div className='w-full flex flex-col items-center justify-center gap-15 mt-32'>
+            <h1 className=' border-b-2 border-black text-2xl'> Loding Animations </h1>
             <div>
                 <div className='w-12 h-12 rounded-full bg-black/55 circle flex items-center justify-center'>
                     <div className=' bg-white rounded-full circle2 flex items-center justify-center'>
                         <div className='bg-black rounded-full circle3'></div>
                     </div>
+                </div>
+            </div>
+            <div>
+                <div className=' relative w-56 h-56'>
+                    <div className='w-12 h-12 bg-green-400  absolute left-30 rounded-md firstCube'></div>
+                    <div className='w-12 h-12 bg-red-400 absolute left-30 rounded-md secondCube'></div>
+                    <div className='w-12 h-12 bg-blue-400 absolute left-30 rounded-md thirdCube'></div>
+                    <div className='w-12 h-12 bg-purple-400 absolute left-30 rounded-md forthCube'></div>
                 </div>
             </div>
         </div>
