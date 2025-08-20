@@ -129,34 +129,23 @@ function page() {
   }, [menuOpen])
 
   useEffect(() => {
-    gsap.to(".ham-icon1", {
-      width: "24px",
-      delay: 2.5,
-      backgroundColor: "white"
-    })
-    gsap.to(".ham-icon2", {
-      width: "15px",
-      delay: 2.5,
-      backgroundColor: "#2c2739"
-    })
-    gsap.to(".ham-icon3", {
-      width: "19px",
-      delay: 2.5,
-      backgroundColor: "white"
-    })
     if (menuOpen) {
       gsap.fromTo(".ham-icon1", {
         width: "22px",
-        backgroundColor: "white"
+        backgroundColor: "white",
+        outline: "none"
       }, {
+        outline: "1px solid #bebdc1",
         width: "24px",
         rotate: 30,
         backgroundColor: "#2c2739"
       })
       gsap.fromTo(".ham-icon2", {
         width: "15px",
-        backgroundColor: "white"
+        backgroundColor: "white",
+        outline: "none"
       }, {
+        outline: "1px solid #bebdc1",
         width: "24px",
         delay: .3,
         rotate: 30,
@@ -164,14 +153,16 @@ function page() {
       })
       gsap.fromTo(".ham-icon3", {
         width: "19px",
-        backgroundColor: "white"
+        backgroundColor: "white",
+        outline: "none"
       }, {
+        outline: "1px solid #bebdc1",
         width: "24px",
         delay: 0.6,
         rotate: 30,
         backgroundColor: "#2c2739"
       })
-    } else {
+    } else if (!menuOpen) {
       gsap.to(".ham-icon1", {
         rotate: 0,
         backgroundColor: "white"
@@ -187,9 +178,24 @@ function page() {
         backgroundColor: "white"
       })
     }
-
-
   }, [menuOpen])
+  useEffect(() => { 
+    gsap.to(".ham-icon1", {
+      width: "24px",
+      delay: 2.5,
+      backgroundColor: "white"
+    })
+    gsap.to(".ham-icon2", {
+      width: "15px",
+      delay: 2.5,
+      backgroundColor: "#2c2739"
+    })
+    gsap.to(".ham-icon3", {
+      width: "19px",
+      delay: 2.5,
+      backgroundColor: "white"
+    })
+  }, [])
 
   return (
     <div className='flex items-center justify-center h-screen w-full'>
