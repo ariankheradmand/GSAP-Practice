@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "../app/globals.css";
 import { AlignRight, Info, Mail, LogIn, UserPlus } from "lucide-react";
 import gsap from "gsap";
+import Link from "next/link";
 
 function NavBar() {
   const [scrolled, setScrolled] = useState(false);
@@ -183,9 +184,9 @@ function NavBar() {
 
       >
         <div className="h-full w-full flex flex-col items-center justify-center text-2xl gap-6">
-          <span className="py-2 contanier opacity-0 flex items-center gap-2">
-            <Info className="icon" size={22} /> About
-          </span>
+          <Link href="/Navbars" className="py-2 contanier opacity-0 flex items-center gap-2">
+            <Info  className="icon" size={22} />  Other Designs
+          </Link>
           <span className="py-2 contanier opacity-0 flex items-center gap-2">
             <Mail className="icon" size={22} /> Contact Us
           </span>
