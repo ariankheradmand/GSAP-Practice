@@ -17,7 +17,7 @@ function page() {
       backgroundColor: " #bebdc1 ",
       rotate: 360,
       boxShadow: "0px 20px 40px rgba(0,0,0,0.4)",
-      duration: 2,
+      duration: 1,
       borderRadius: "16px",
     })
 
@@ -28,7 +28,7 @@ function page() {
     }, {
       width: "80%",
       height: 82,
-      delay: 2,
+      delay: 1,
       ease: "circle",
       borderRadius: "16px",
     })
@@ -37,14 +37,14 @@ function page() {
 
     gsap.to(".logo", {
       left: 20,
-      delay: 2.1,
+      delay: 1.5,
     })
 
     gsap.fromTo(".buttons", {
       translateY: -25,
       boxShadow: ""
     }, {
-      delay: 2.5,
+      delay: 1.5,
       translateY: 0,
       boxShadow: "0px 20px 40px rgba(0,0,0,0.4)",
       stagger: 0.2,
@@ -60,14 +60,14 @@ function page() {
       opacity: 1,
       duration: 3,
       left: "150px",
-      delay: 2.5,
+      delay: 1.5,
     })
 
     gsap.to(".big-circle", {
       left: "45%",
       width: 90,
       height: 90,
-      duration: 5,
+      duration: 4,
       delay: 6,
       ease: "bounce.Out",
       yoyo: true,
@@ -182,17 +182,17 @@ function page() {
   useEffect(() => { 
     gsap.to(".ham-icon1", {
       width: "24px",
-      delay: 2.5,
+      delay: 1.5,
       backgroundColor: "white"
     })
     gsap.to(".ham-icon2", {
       width: "15px",
-      delay: 2.5,
+      delay: 1.5,
       backgroundColor: "#2c2739"
     })
     gsap.to(".ham-icon3", {
       width: "19px",
-      delay: 2.5,
+      delay: 1.5,
       backgroundColor: "white"
     })
   }, [])
