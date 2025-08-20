@@ -46,45 +46,56 @@ function Loading() {
             })
     }, [])
     useEffect(() => {
-        gsap.fromTo(".firstCube" , {
+        gsap.fromTo(".firstCube", {
             left: 0,
         }, {
             left: 204,
             rotate: 360,
             duration: 2,
             yoyo: true,
-                repeat: -1,
-                ease: "circ"
+            repeat: -1,
+            ease: "circ"
         })
-        gsap.fromTo(".secondCube" , {
+        gsap.fromTo(".secondCube", {
             left: 0,
         }, {
             left: 152,
             rotate: 360,
             duration: 2,
             yoyo: true,
-                repeat: -1,
-                ease: "circ"
+            repeat: -1,
+            ease: "circ"
         })
-        gsap.fromTo(".thirdCube" , {
+        gsap.fromTo(".thirdCube", {
             left: 0,
         }, {
             left: 100,
             rotate: 360,
             duration: 2,
             yoyo: true,
-                repeat: -1,
-                ease: "circ"
+            repeat: -1,
+            ease: "circ"
         })
-        gsap.fromTo(".forthCube" , {
+        gsap.fromTo(".forthCube", {
             left: 0,
         }, {
             left: 48,
             rotate: 360,
             duration: 2,
             yoyo: true,
-                repeat: -1,
-                ease: "circ"
+            repeat: -1,
+            ease: "circ"
+        })
+        gsap.fromTo(".innerCube" , {
+            width: 12,
+            height: 12,
+        } , {
+            duration: 2,
+            yoyo: true,
+            repeat: -1,
+            width: 48,
+            height: 48,
+            ease: "sine"
         })
     }, [])
 
@@ -100,10 +111,18 @@ function Loading() {
             </div>
             <div>
                 <div className=' relative w-56 h-56'>
-                    <div className='w-12 h-12 bg-green-400  absolute left-30 rounded-md firstCube'></div>
-                    <div className='w-12 h-12 bg-red-400 absolute left-30 rounded-md secondCube'></div>
-                    <div className='w-12 h-12 bg-blue-400 absolute left-30 rounded-md thirdCube'></div>
-                    <div className='w-12 h-12 bg-purple-400 absolute left-30 rounded-md forthCube'></div>
+                    <div className='w-12 h-12 bg-black  absolute left-30 rounded-md firstCube border-2 border-white flex items-center justify-center'>
+                        <div className='w-6 h-6 bg-white rounded-sm innerCube' ></div>
+                    </div>
+                    <div className='w-12 h-12 bg-white absolute left-30 rounded-md secondCube border-2 border-black  flex items-center justify-center'>
+                        <div className='w-6 h-6 bg-black rounded-sm innerCube' ></div>
+                    </div>
+                    <div className='w-12 h-12 bg-black absolute left-30 rounded-md thirdCube border-2 border-white  flex items-center justify-center'>
+                        <div className='w-6 h-6 bg-white rounded-sm innerCube' ></div>
+                    </div>
+                    <div className='w-12 h-12 bg-white absolute left-30 rounded-md forthCube border-2 border-black  flex items-center justify-center'>
+                        <div className='w-6 h-6 bg-black rounded-sm innerCube' ></div>
+                    </div>
                 </div>
             </div>
         </div>
