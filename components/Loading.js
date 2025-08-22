@@ -101,7 +101,7 @@ function Loading() {
 
     return (
         <div className='w-full flex flex-col items-center justify-center gap-15 mt-32'>
-            <h1 className=' border-b-2 border-black text-2xl'> Loding Animations </h1>
+            <h1 className=' border-b-2 border-black text-2xl'> Loading Animations </h1>
             <div>
                 <div className='w-12 h-12 rounded-full bg-black/55 circle flex items-center justify-center'>
                     <div className=' bg-white rounded-full circle2 flex items-center justify-center'>
