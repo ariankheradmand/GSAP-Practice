@@ -7,11 +7,13 @@ function Page() {
   const [toast, setToast] = useState(null);
 
   const showToast = (type, content) => {
-    setToast({ type, content });
-  };
-
-  const hideToast = () => {
+    // Reset first to cancel the old toast
     setToast(null);
+
+    // Small timeout so React unmounts the old one before mounting new
+    setTimeout(() => {
+      setToast({ type, content, id: Date.now() });
+    }, 50);
   };
 
   return (
@@ -20,38 +22,39 @@ function Page() {
         onClick={() =>
           showToast("warning", "Careful! Something might go wrong.")
         }
-        className="bg-yellow-500 px-2 py-1 rounded-md text-white"
+        className="bg-red-500 px-2 py-1 rounded-md text-white hover:scale-115 transition-all"
       >
         Warning
       </button>
 
       <button
         onClick={() => showToast("info", "Just so you know, this is info.")}
-        className="bg-blue-500 px-2 py-1 rounded-md text-white"
+        className="bg-blue-500 px-2 py-1 rounded-md text-white hover:scale-115 transition-all"
       >
         Info
       </button>
 
       <button
         onClick={() => showToast("error", "Oops! Something went wrong.")}
-        className="bg-red-500 px-2 py-1 rounded-md text-white"
+        className="bg-yellow-500 px-2 py-1 rounded-md text-white hover:scale-115 transition-all"
       >
         Error
       </button>
 
       <button
         onClick={() => showToast("success", "Your changes were saved!")}
-        className="bg-green-500 px-2 py-1 rounded-md text-white"
+        className="bg-green-500 px-2 py-1 rounded-md text-white hover:scale-115 transition-all"
       >
         Success
       </button>
 
       {toast && (
         <HotToast
+          key={toast.id}
           timer={true}
           type={toast.type}
           content={toast.content}
-          onClose={hideToast} // pass close handler
+          onClose={() => setToast(null)}
         />
       )}
     </div>

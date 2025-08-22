@@ -1,9 +1,15 @@
 "use client";
 
-import { CheckCircle, X, AlertCircle, Info, BadgeInfo } from "lucide-react";
+import {
+  CheckCircle,
+  X,
+  MessageSquareWarning,
+  Info,
+  OctagonX,
+} from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function HotToast({ timer, content, type, onClose }) {
   const forms = [
@@ -19,14 +25,14 @@ export default function HotToast({ timer, content, type, onClose }) {
       iconColor: "text-red-700",
       bar: "bg-red-300",
       bg: "from-red-400 to-red-500",
-      icon: BadgeInfo,
+      icon: OctagonX,
     },
     {
       name: "warning",
       iconColor: "text-yellow-700",
       bar: "bg-yellow-300",
       bg: "from-yellow-400 to-yellow-500",
-      icon: AlertCircle,
+      icon: MessageSquareWarning,
     },
     {
       name: "info",
@@ -41,8 +47,9 @@ export default function HotToast({ timer, content, type, onClose }) {
   const Icon = current.icon;
 
   const [active, setActive] = useState(true);
+  const toastRef = useRef(null);
 
-  // GSAP animations
+  // Your original animations stay intact
   useGSAP(() => {
     if (active) {
       gsap.fromTo(
@@ -55,6 +62,7 @@ export default function HotToast({ timer, content, type, onClose }) {
         { width: "10", height: "10", borderRadius: "100%", rotate: 0 },
         { width: "30", height: "30", borderRadius: "12px", rotate: 360 }
       );
+      gsap.fromTo(".icon", { rotate: 0 }, { rotate: -360 });
       gsap.fromTo(
         ".box",
         { width: "20px", height: "20px" },
@@ -87,7 +95,7 @@ export default function HotToast({ timer, content, type, onClose }) {
         duration: 0.4,
         ease: "power1.inOut",
         onComplete: () => {
-          if (onClose) onClose(); // notify parent when fully hidden
+          if (onClose) onClose();
         },
       });
     }
@@ -101,13 +109,57 @@ export default function HotToast({ timer, content, type, onClose }) {
     }
   }, [timer]);
 
+  // Swipe-to-dismiss for mobile
+  useEffect(() => {
+    const el = toastRef.current;
+    if (!el) return;
+
+    let startX = 0;
+    let currentX = 0;
+    let dragging = false;
+
+    const onTouchStart = (e) => {
+      startX = e.touches[0].clientX;
+      dragging = true;
+    };
+
+    const onTouchMove = (e) => {
+      if (!dragging) return;
+      currentX = e.touches[0].clientX - startX;
+      gsap.to(el, { x: currentX, duration: 0 });
+    };
+
+    const onTouchEnd = () => {
+      dragging = false;
+      if (Math.abs(currentX) > 100) {
+        gsap.to(el, {
+          x: currentX > 0 ? 500 : -500,
+          opacity: 0,
+          duration: 0.3,
+          ease: "power1.in",
+          onComplete: () => setActive(false),
+        });
+      } else {
+        gsap.to(el, { x: 0, duration: 0.3, ease: "power2.out" });
+      }
+      currentX = 0;
+    };
+
+    el.addEventListener("touchstart", onTouchStart);
+    el.addEventListener("touchmove", onTouchMove);
+    el.addEventListener("touchend", onTouchEnd);
+
+    return () => {
+      el.removeEventListener("touchstart", onTouchStart);
+      el.removeEventListener("touchmove", onTouchMove);
+      el.removeEventListener("touchend", onTouchEnd);
+    };
+  }, []);
+
   return (
     <div className="main w-full h-auto fixed bottom-[-90px] flex items-center justify-center z-50">
-      <div className="opacity-0 pointer-events-none absolute bg-green-400 bg-red-400 bg-yellow-400 bg-blue-400">
-        {/* force Tailwind to generate colors */}
-      </div>
-
       <div
+        ref={toastRef}
         className={`bg-gradient-to-r ${current.bg} flex items-start gap-3 p-4 overflow-hidden relative box`}
       >
         {/* Icon */}
