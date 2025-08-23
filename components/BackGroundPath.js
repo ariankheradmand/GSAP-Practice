@@ -9,17 +9,6 @@ function BackGroundPath() {
   gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(() => {
-    gsap.utils.toArray(".dots").forEach((dot, i) => {
-      gsap.to(dot, {
-        backgroundColor: "#51a2ff",
-        scrollTrigger: {
-          trigger: ".scroll-container",
-          start: () => `${i * 25}% top`, // 0%, 25%, 50%, 75%
-          end: () => `${(i + 1) * 25}% top`,
-          toggleActions: "play none none reverse", // turn blue on enter, back to white on reverse
-        },
-      });
-    });
     gsap.fromTo(
       ".vertical",
       {
