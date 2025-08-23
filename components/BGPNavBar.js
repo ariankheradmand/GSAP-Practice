@@ -26,7 +26,7 @@ function BGPNavBar() {
         ease: "elastic"
       }
     );
-    gsap.to(".main" , {scale: 60 , delay: 2, duration: .6})
+    gsap.to(".main" , {scale: 90 , delay: 2, duration: .6})
 
     gsap.to(".logo" , {opacity: 1 , delay:2.5})
     gsap.to(".logo" , {rotate:360 , delay:2.6 , repeat: -1, duration: 10})
