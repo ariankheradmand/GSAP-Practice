@@ -49,7 +49,7 @@ export default function HotToast({ timer, content, type, onClose }) {
   const [active, setActive] = useState(true);
   const toastRef = useRef(null);
 
-  // Your original animations stay intact
+  
   useGSAP(() => {
     if (active) {
       gsap.fromTo(
