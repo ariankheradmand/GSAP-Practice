@@ -45,3 +45,9 @@ body {
 .py-6m {
  padding : 18px 0px ;
 }
+
+.nextjs-portal,
+[data-nextjs-dialog-root],
+[data-nextjs-dialog-overlay] {
+  display: none !important;
+}

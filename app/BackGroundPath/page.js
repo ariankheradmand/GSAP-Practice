@@ -35,7 +35,10 @@ function page() {
   });
 
   return (
-    <div className="flex items-center justify-center mb-600 ">
+    <div
+      suppressHydrationWarning={true}
+      className="flex items-center justify-center mb-600 "
+    >
       <BackGroundPath />
       <BGPNavBar />
       <div className="text-white h-screen w-full flex items-center justify-center fixed top-0 ">

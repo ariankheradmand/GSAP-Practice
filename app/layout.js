@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono , Roboto , Rubik, Anton} from "next/font/google";
+import { Geist, Geist_Mono, Roboto, Rubik, Anton } from "next/font/google";
 import "./globals.css";
 
 const geistRubic = Rubik({
@@ -17,7 +17,7 @@ const geistAnton = Anton({
 const geistRoboto = Roboto({
   variable: "--font-geist-roboto",
   subsets: ["latin"],
-})
+});
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        suppressHydrationWarning="true"
+        suppressHydrationWarning
         className={` ${geistRoboto.variable} ${geistRubic.variable} ${geistAnton.variable} font-roboto antialiased`}
       >
         {children}

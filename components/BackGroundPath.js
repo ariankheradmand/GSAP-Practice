@@ -75,7 +75,7 @@ function BackGroundPath() {
   }, []);
 
   return (
-  <div className="fixed w-full h-screen top-0 z-20 scroll-container">
+  <div className="fixed w-full h-screen top-0 z-10 scroll-container">
       
         <div className="vertical bg-gray-400/30 w-2 absolute left-[10%]"></div>
         <div className="vertical bg-gray-400/30 w-2 absolute right-[10%]"></div>
